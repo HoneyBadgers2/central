@@ -12,6 +12,7 @@ import MyTasks from './Components/Containers/MyTasks/MyTasks.jsx';
 import Settings from './Components/Containers/Settings/Settings.jsx';
 import Chat from './Components/Containers/Chat/Chat.jsx';
 import Reports from './Components/Containers/Reports/Reports.jsx';
+import VideoChat from './Components/videoChat.jsx';
 import axios from 'axios';
 import {connect} from 'react-redux'
 import {getUsersTasks, getAllTasks, findAllTasksOfUser, getAllUsers} from './Actions/index.js'
@@ -77,6 +78,7 @@ class Main extends Component {
           <Route exact path="/settings" component={Settings}/>
           <Route exact path="/chat" component={Chat}/>
           <Route exact path="/reports" component={Reports}/>
+          <Route path="/videoChat/:userId/:matchId" component={VideoChat}/>
         </Switch>
       </BrowserRouter>
     )

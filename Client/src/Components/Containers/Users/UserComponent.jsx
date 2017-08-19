@@ -11,6 +11,7 @@ const UserComponent = (props) => {
         <img className="tasksListItemCircleImage" src={props.user.image}/>
       </div>
       <div className="tasksListItemTitle">{props.user.username}</div>
+      <Link to={"/videoChat/" + props.profile.nickname + '/' + props.user.username}><button className="chatInputButton btn btn-success" style={{float: "right"}}>Video Chat</button></Link>
     </div>
   )
 }

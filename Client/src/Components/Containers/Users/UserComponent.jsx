@@ -10,7 +10,7 @@ const UserComponent = (props) => {
       <div className="tasksListItemCircle">
         <img className="tasksListItemCircleImage" src={props.user.image}/>
       </div>
-      <div className="tasksListItemTitle">{props.user.username}</div>
+      <div className="tasksListItemTitle">{props.user.username}<br></br>{props.user.title} - <strong>{props.user.status}</strong></div>
     </div>
   )
 }

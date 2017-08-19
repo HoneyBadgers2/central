@@ -332,6 +332,7 @@ svg.custom path.link {
 	margin-top: 75px;
 	width: 82%;
 	height: 750px;
+	overflow: scroll;
 }
 
 .tasksListItemContainer {

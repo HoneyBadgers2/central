@@ -1,3 +1,16 @@
+#vid-box {
+	height: 600px;
+	width: 600px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%); 
+}
+
+.center {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%); 
+}
 
 .spinnerContainer {
 	text-align: center;
@@ -537,6 +550,11 @@ p.landing-blurbs {
 
 .pie {
 	text-align: center;
+}
+
+.btn-holder {
+	position: absolute;
+	top: 60%;
 }
 
 .btn-success {

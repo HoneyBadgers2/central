@@ -32,7 +32,7 @@ class UserList extends Component{
             <div>
                {
                 this.props.users.map((user, index) =>
-                  <UserComponent user={user} key={index}/>
+                  <UserComponent user={user} profile={this.props.profile} key={index}/>
                 )
               } 
             </div>
@@ -48,7 +48,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { users: state.tasks.allUsers }
+  return { 
+    users: state.tasks.allUsers,
+    profile: state.tasks.profile
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);

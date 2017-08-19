@@ -2,8 +2,9 @@ const mysql = require('mysql');
 
 var db = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    database: 'taskmon'
+    user: 'student',
+    database: 'taskmon',
+    password: 'student'
 });
 
 db.connect((err, res) => {

@@ -542,8 +542,13 @@ p.landing-blurbs {
 }
 
 .chatListContainer {
-
+	margin-left: 3%;
+	margin-top: 75px;
+	width: 82%;
+	height: 750px;
 }
+
+
  .projectFormButtons {
 	margin: 0 auto
 }
@@ -606,3 +611,5 @@ p.landing-blurbs {
 	margin: 0 auto;
 	margin-left: -25px;
 }
+
+

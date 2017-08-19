@@ -8,7 +8,7 @@ import $ from 'jquery';
 import NavTask from '../Dashboard/NavTask.jsx';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {createTask, projectTree} from '../../../Actions/index.js';
+import {createTask, projectTree, allUsers} from '../../../Actions/index.js';
 import MyModal from './TaskModal.jsx';
 import CompleteModal from './CompleteModal.jsx';
 import io from 'socket.io-client';
@@ -23,7 +23,11 @@ class TasksTree extends Component{
       currentNode: null,
       button: 900,
       taskId: null,
-      assignee: {name: '', img: "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"},
+      assignee: {
+        name: '', 
+        img: "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+        title: '',
+        status: ''},
     }
     this.onNodeClick = this.onNodeClick.bind(this);
     this.traverseTree = this.traverseTree.bind(this);
@@ -58,14 +62,12 @@ class TasksTree extends Component{
     quoteIdx = nodeAssigneeClone.indexOf("'");
     let img = nodeAssigneeClone.splice(0, quoteIdx).join('');
 
-    console.log('onNodeClick: node:', node);
-    console.log('onNodeClick: node.assignee[0]:', node.assignee[0]);
-    // let name = '';
-    // let img = '';
-    console.log('onNodeClick: name to use:', name);
-    console.log('onNodeClick: img to use:', img);
-
-    console.log('TasksTree: this.state:', this.state);
+    // console.log('onNodeClick: node:', node);
+    // console.log('onNodeClick: typeof node.assignee:', typeof node.assignee);
+    // console.log('onNodeClick: node.assignee:', node.assignee);
+    // console.log('onNodeClick: name to use:', name);
+    // console.log('onNodeClick: img to use:', img);
+    // console.log('TasksTree: this.state:', this.state);
 
     this.setState({
       currentNode: node,
@@ -117,12 +119,14 @@ class TasksTree extends Component{
 
   handleTaskForm(nameVal, assigneeVal, budgetHoursVal, descriptionVal) {
     var splitStrAndEraseSpaces = function (str) {
-      var newArr = str.trim().split(',');
+      // var newArr = str.trim().split(',');
+      var newArr = [str.trim(), 'tomato sauce string in spaghetti function (YOU NEED THIS)'];
       return newArr.map(function(val){
         return val.trim();
       })
     }
     var newAssigneeVals = splitStrAndEraseSpaces(assigneeVal);
+    // console.log('TasksTree: submitting Task Form:', newAssigneeVals);
     var taskDetails = {name: nameVal, assignees: newAssigneeVals, budget_hours: budgetHoursVal, description: descriptionVal, owner: this.props.storeProfile.userid, parentid: this.state.currentNode.id};
     if (Number(budgetHoursVal) == budgetHoursVal && budgetHoursVal) {
       axios.post('/addTask', taskDetails)
@@ -243,6 +247,7 @@ class TasksTree extends Component{
                     showModal={this.state.showModal}
                     handleChange = {this.handleChange}
                     handleTaskForm = {this.handleTaskForm}
+                    users = {this.props.users}
                   />
                 </div>
                 <div>
@@ -265,6 +270,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({createTask, projectTree}, dispatch);
 }
 function mapStateToProps(state) {
-  return {tree: state.tasks.projectTree, storeProfile: state.tasks.profile}
+  // console.log('TasksTree:', state.tasks.allUsers);
+  return {tree: state.tasks.projectTree, storeProfile: state.tasks.profile, users: state.tasks.allUsers}
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TasksTree);

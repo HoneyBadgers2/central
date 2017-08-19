@@ -227,7 +227,7 @@ class NavTask extends React.Component {
                             <div style={{ fontSize: 18, color: '#E5E5E5', paddingLeft: 10  }}>
                                 {'  ' + this.props.profile.nickname + '  '}
                             </div>
-                            <div style={{ fontSize: 11,  color: '#E5E5E5', paddingLeft: 10 }}> Software Engineer </div>
+                            <div style={{ fontSize: 11,  color: '#E5E5E5', paddingLeft: 10 }}>  </div>
                         </div>
                     </div>
                     <SideNavWithAlerts Projects = {this.props.projects.length} Tasks={this.props.tasks.length} Auth = {this.state.auth}/>

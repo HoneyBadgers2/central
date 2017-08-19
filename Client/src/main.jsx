@@ -55,6 +55,7 @@ class Main extends Component {
     })
     axios.get('/entireUsers')
       .then(result => {
+        console.log('result from GET /entireUsers', result.data);
         this.props.getAllUsers(result.data)
       })
       .catch(err => {

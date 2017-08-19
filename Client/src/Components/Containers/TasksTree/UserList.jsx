@@ -6,14 +6,13 @@ import {bindActionCreators} from 'redux';
 import {fetchTasks} from '../../../Actions/index.js';
 import NavTask from '../Dashboard/NavTask.jsx';
 import UserComponent from './UserComponent.jsx';
-import { Button, Modal } from 'react-bootstrap';
 
 
 class UserList extends Component{
   constructor(props) {
     super(props);
   }
- 
+
   render() {
     return(
       <div className="dashboard-container">
@@ -26,13 +25,12 @@ class UserList extends Component{
         <div className="right-col">
 					<div className="dashboard-title">
 						<h1 className="pull-left">Users</h1>
-            <Button bsStyle="success" onClick={() => {alert('You are using the basic version. Please upgrade in order to use this feature!')}}>Add/Update User</Button>
 					</div>
           <div className="tasksListContainer">
             <div>
                {
                 this.props.users.map((user, index) =>
-                  <UserComponent user={user} profile={this.props.profile} key={index}/>
+                  <UserComponent user={user} key={index}/>
                 )
               } 
             </div>
@@ -48,10 +46,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { 
-    users: state.tasks.allUsers,
-    profile: state.tasks.profile
-  }
+  return { users: state.tasks.allUsers }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);

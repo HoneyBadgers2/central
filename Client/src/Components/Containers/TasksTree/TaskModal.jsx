@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import io from 'socket.io-client';
 
 export default (props) => {
-
+  console.log('TaskModal:', props);
   return (
     <Modal show={props.showModal} onHide={props.toggleModal}>
       <Modal.Header closeButton>
@@ -19,7 +19,18 @@ export default (props) => {
               </div>
               <div className="form-group">
                 <label htmlFor="assignee">Assignee</label>
-                <input type="text" className="form-control" name="assignee" id="assigneeForm" placeholder="please enter a name" onChange={props.handleChange}/>
+                {/* <input type="text" className="form-control" name="assignee" id="assigneeForm" placeholder="please enter a name" onChange={props.handleChange}/> */}
+                <select id="assigneeForm" name="assignee" onChange={props.handleChange}>
+                  {props.users.map((user, index) => {
+                    if (user.status === 'Active') {
+                      return (
+                        <option value={"{ username: '" + user.username + "', image: '" + user.image +"'}"} key={index}>{user.username} - {user.title}</option>
+                      )
+                    } else {
+                      return null;
+                    }
+                  })}
+                </select>
               </div>
               <div className="form-group">
                 <label htmlFor="budgetHours">Budget Hours</label>

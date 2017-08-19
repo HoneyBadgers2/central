@@ -4,21 +4,52 @@ const db = require('../Database/dbConnection.js');
 let userData = [
     {
         username: 'richsong003',
-        image: 'https://veekun.com/dex/media/pokemon/dream-world/568.svg'
+        image: 'https://veekun.com/dex/media/pokemon/dream-world/568.svg',
+        title: 'Trash Heap Pokemon',
+        status: 'Retired'
     },
     {
         username: 'austenesus',
-        image: 'https://avatars0.githubusercontent.com/u/27669434?v=4&s=400'
+        image: 'https://avatars0.githubusercontent.com/u/27669434?v=4&s=400',
+        title: 'Professional Code Breaker',
+        status: 'Active'
     },
     {
         username: 'jardini.alex',
-        image: 'https://cdn.bulbagarden.net/upload/c/c4/569Garbodor.png'
+        image: 'https://cdn.bulbagarden.net/upload/c/c4/569Garbodor.png',
+        title: 'Evolved Trash Heap Pokemon',
+        status: 'Retired'
     },
     {
         username: 'ham-d',
-        image: 'https://avatars2.githubusercontent.com/u/11185264?v=4&s=400'
+        image: 'https://avatars2.githubusercontent.com/u/11185264?v=4&s=400',
+        title: 'Page Styler for 15-inch Screens',
+        status: 'Active'
+    },
+    {
+        username: 'jeffreylee0116',
+        image: 'https://lh6.googleusercontent.com/-pk2uM6YtwFQ/AAAAAAAAAAI/AAAAAAAAAA0/VL1g_jpI5Es/photo.jpg',
+        title: 'Title Slandering Spaghetti Producer',
+        status: 'Active'
+    },
+    {
+        username: 'arenrostamian',
+        image: 'https://lh4.googleusercontent.com/-J3NryPwH7jA/AAAAAAAAAAI/AAAAAAAAHhI/0qgzwmt4yCQ/photo.jpg',
+        title: 'Notification Spamming Specialist',
+        status: 'Active'
+    },
+    {
+        username: 'tkyoon91',
+        image: 'https://avatars1.githubusercontent.com/u/28766331?v=4&s=400',
+        title: 'Video Chatting Guru',
+        status: 'Active'
+    },
+    {
+        username: 'miken619',
+        image: 'http://i.imgur.com/m9NeCaC.png',
+        title: 'File Duplication Expert',
+        status: 'Active'
     }
-
 ];
 
 
@@ -36,6 +67,20 @@ let rootTask = [{
     budget_hours: 100,
     owner: 2,
     assignee: "{username: 'jardini.alex', image: 'https://cdn.bulbagarden.net/upload/c/c4/569Garbodor.png'}"
+},
+{
+    name: 'Legacy Project',
+    desceription: 'Code that needs fixing',
+    budget_hours: 80,
+    owner: 5,
+    assignee: "{username: 'jeffreylee0116', image: 'https://lh6.googleusercontent.com/-pk2uM6YtwFQ/AAAAAAAAAAI/AAAAAAAAAA0/VL1g_jpI5Es/photo.jpg'}"
+},
+{
+    name: 'Make Dinner',
+    desceription: '',
+    budget_hours: 8,
+    owner: 5,
+    assignee: "{username: 'jeffreylee0116', image: 'https://lh6.googleusercontent.com/-pk2uM6YtwFQ/AAAAAAAAAAI/AAAAAAAAAA0/VL1g_jpI5Es/photo.jpg'}"
 }];
 
 let taskData = [
@@ -343,7 +388,7 @@ createNewTask = (clientResponse, taskObj) => {
 };
 
 createNewUser = (clientResponse, userObj) => {
-    let sql = `INSERT INTO users (username, image) VALUES ("${userObj.username}", "${userObj.image}");`;
+    let sql = `INSERT INTO users (username, image, title, status) VALUES ("${userObj.username}", "${userObj.image}", "${userObj.title}", "${userObj.status}");`;
     db.query(sql, (err, res) => {
         count++;
         userCounter++;

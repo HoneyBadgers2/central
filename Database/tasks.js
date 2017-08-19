@@ -37,7 +37,7 @@ createNewTask = (clientResponse, taskObj) => {
     let sql = `INSERT INTO tasks (name, description, budget_hours, owner, parentid, assignee) VALUES (?, ?, ?, ?, ?, ?);`;
     console.log('DB createNewTask: insert query', sql);
     db.query(sql, temp, (err, resp) => {
-
+        console.log('DB createNewTask: resp', resp);
         var responseObject = {};
         if(taskObj.assignees.length > 0) {
             responseObject.success = [];
